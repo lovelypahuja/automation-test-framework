@@ -1,7 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class ContactUsPage {
     private WebDriver driver;
@@ -24,6 +26,10 @@ public class ContactUsPage {
     }
 
     public void submitForm() {
-        driver.findElement(submitButton).click();
+        //driver.findElement(submitButton).click();
+        WebElement submitButton = driver.findElement(By.name("submit"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", submitButton);
+        submitButton.click();
+
     }
 }
